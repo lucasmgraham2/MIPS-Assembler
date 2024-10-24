@@ -1,6 +1,7 @@
 #include "MIPS_interpreter.h"
 
 int main(void) {
+	//init stuff
 	// inializes everything
 	initAll();
 
