@@ -1,7 +1,6 @@
 #include "Instruction.h"
 
 void and_reg_assm(void) {
-	// whatever
 	// Checking that the op code matches
 	// strcmp(string1, string2) return 0 if they match
 	if (strcmp(OP_CODE, "AND") != 0) {
@@ -85,7 +84,7 @@ void and_reg_bin(void) {
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	//  any x will be skipped
 	// If the manual shows (0), then the value of that bit doesnt matter
-	if (checkBits(31, "000000") != 0 && checkBits(5, "100100") != 0) {
+	if (checkBits(31, "000000") != 0 || checkBits(5, "100100") != 0) {
 		state = WRONG_COMMAND;
 		return;
 	}

@@ -515,13 +515,8 @@ char* readParam(char* line, struct Param* param) {
 	}
 	else if (toupper(*line) == '#') {
 		line++;
-		char imm[5] = { 0 };
-		int i = 0;
-		while (isdigit(*line)) {
-			imm[i++] = *line++;
-		}
 		param->type = IMMEDIATE;
-		param->value = atoi(imm);
+		line = immd2num(line, &param->value);
 	}
 	else {
 		state = INVALID_PARAM;
