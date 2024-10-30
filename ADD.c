@@ -77,9 +77,9 @@ void add_reg_bin(void) {
 	*/
 
 	setOp("ADD");
-	setParam(1, REGISTER, Rd);
-	setParam(2, REGISTER, Rs);
-	setParam(3, REGISTER, Rt);
+	setParam(1, REGISTER, Rd); 
+	setParam(2, REGISTER, Rs); 
+	setParam(3, REGISTER, Rt); 
 
 	state = COMPLETE_DECODE;
 }

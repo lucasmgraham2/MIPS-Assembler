@@ -69,8 +69,8 @@ void addi_immd_bin(void) {
 	*/
 
 	uint32_t Rs = getBits(25, 5);
-	uint32_t Rt = getBits(20, 5);
-	uint32_t imm = getBits(15, 16);
+	uint32_t Rt = getBits(20, 5); 
+	uint32_t imm = getBits(15, 16); 
 
 
 	/*
