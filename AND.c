@@ -54,7 +54,7 @@ void and_reg_assm(void) {
 		return;
 	}
 
-	
+
 
 	/*
 		Putting the binary together
