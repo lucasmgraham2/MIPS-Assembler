@@ -14,6 +14,7 @@ void sw_immd_assm(void) {
 		state = MISSING_REG;
 		return;
 	}
+	//f
 
 	if (PARAM2.type != REGISTER) { // Rs (base register)
 		state = MISSING_REG;
