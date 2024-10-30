@@ -21,8 +21,8 @@ void (*assembly_instructs[])(void) = {
 	bne_immd_assm,
 	slti_immd_assm,
 	sw_immd_assm,
-	
-	
+
+
 
 	// register functions
 	add_reg_assm,
@@ -34,8 +34,8 @@ void (*assembly_instructs[])(void) = {
 	and_reg_assm,
 	or_reg_assm,
 	slt_reg_assm,
-	
-	
+
+
 
 	end_list
 };
@@ -260,11 +260,6 @@ void printAssm(void) {
 		}
 	}
 
-
-	if ((PARAM3.type == EMPTY)) {
-		printf(", ");
-	}
-
 	// checks param 3 and prints if it isn't empty
 	if (PARAM3.type != EMPTY) {
 		if (PARAM3.type == REGISTER && (strcmp(OP_CODE, "LW") == 0 || strcmp(OP_CODE, "SW") == 0)) {
@@ -389,25 +384,25 @@ void parseAssem(char* line) {
 
 	// reads op code into the instruction op code
 	if (startswith(line, "ADDI") == 1) { setOp("ADDI"); line += 4; }
-	else if (startswith(line, "ADD") == 1) { setOp("ADD"); line += 3;}
+	else if (startswith(line, "ADD") == 1) { setOp("ADD"); line += 3; }
 	else if (startswith(line, "ANDI") == 1) { setOp("ANDI"); line += 4; }
-	else if (startswith(line, "AND") == 1) { setOp("AND"); line += 3;}
-	else if (startswith(line, "BEQ") == 1) { setOp("BEQ"); line += 3;}
-	else if (startswith(line, "BNE") == 1) { setOp("BNE"); line += 3;}
-	else if (startswith(line, "DIV") == 1) { setOp("DIV"); line += 3;}
-	else if (startswith(line, "LUI") == 1) { setOp("LUI"); line += 3;}
+	else if (startswith(line, "AND") == 1) { setOp("AND"); line += 3; }
+	else if (startswith(line, "BEQ") == 1) { setOp("BEQ"); line += 3; }
+	else if (startswith(line, "BNE") == 1) { setOp("BNE"); line += 3; }
+	else if (startswith(line, "DIV") == 1) { setOp("DIV"); line += 3; }
+	else if (startswith(line, "LUI") == 1) { setOp("LUI"); line += 3; }
 	else if (startswith(line, "LW") == 1) { setOp("LW"); line += 2; }
-	else if (startswith(line, "MFHI") == 1) { setOp("MFHI"); line += 4;}
-	else if (startswith(line, "MFLO") == 1) { setOp("MFLO"); line += 4;}
-	else if (startswith(line, "MULT") == 1) { setOp("MULT"); line += 4;}
+	else if (startswith(line, "MFHI") == 1) { setOp("MFHI"); line += 4; }
+	else if (startswith(line, "MFLO") == 1) { setOp("MFLO"); line += 4; }
+	else if (startswith(line, "MULT") == 1) { setOp("MULT"); line += 4; }
 	else if (startswith(line, "ORI") == 1) { setOp("ORI"); line += 3; }
-	else if (startswith(line, "OR") == 1) { setOp("OR"); line += 2;}
+	else if (startswith(line, "OR") == 1) { setOp("OR"); line += 2; }
 	else if (startswith(line, "SLTI") == 1) { setOp("SLTI"); line += 4; }
-	else if (startswith(line, "SLT") == 1) { setOp("SLT"); line += 3;}
-	else if (startswith(line, "SUB") == 1) { setOp("SUB"); line += 3;}
+	else if (startswith(line, "SLT") == 1) { setOp("SLT"); line += 3; }
+	else if (startswith(line, "SUB") == 1) { setOp("SUB"); line += 3; }
 	else if (startswith(line, "SW") == 1) { setOp("SW"); line += 2; }
 	else { state = UNRECOGNIZED_COMMAND; return; }
-	
+
 
 	if (*line != ' ') {
 		state = MISSING_SPACE;
@@ -485,10 +480,10 @@ char* readParam(char* line, struct Param* param) {
 		line++;
 		comma_flag = 1;
 	}
-	if (toupper(*line) == '(' ) {
+	if (toupper(*line) == '(') {
 		line++;
 	}
-	
+
 
 	// eat any whitespace
 	while (*line == ' ') { line++; }
@@ -497,7 +492,7 @@ char* readParam(char* line, struct Param* param) {
 		state = MISSING_PARAM;
 		return NULL;
 	}
-	
+
 
 	// check parameter type and save value
 	if (toupper(*line) == '$') {
@@ -522,17 +517,17 @@ char* readParam(char* line, struct Param* param) {
 		state = INVALID_PARAM;
 		return NULL;
 	}
-	if (toupper(*line) == ')' ) {
+	if (toupper(*line) == ')') {
 		line++;
 	}
 	// eat any whitespace
 	while (*line == ' ') { line++; }
 
 	// check for comma if there wasn't one at the beginning
-	if ((strcmp(OP_CODE, "LW") == 0 || strcmp(OP_CODE, "SW") == 0)) {
+	if (strcmp(OP_CODE, "LW") == 0 || strcmp(OP_CODE, "SW") == 0 || strcmp(OP_CODE, "MFLO") == 0 || strcmp(OP_CODE, "MFHI") == 0) {
 		comma_flag = 1;
 	}
-	if ((comma_flag == 0) ) {
+	if ((comma_flag == 0)) {
 		if (*line != ',') {
 			state = MISSING_COMMA;
 		}
