@@ -1,5 +1,9 @@
 #include "Instruction.h"
-
+/*
+Luke Graham: ADD, ADDI, BEQ, BNE, DIV
+Wyatt Albertson: LUI, LW, MFHI, MFLO, MULT
+Caleb Edwards: OR, ORI, SLT, SLTI, SUB, SW
+*/
 void mult_reg_assm(void) {
 	// Checking that the op code matches
 	// strcmp(string1, string2) return 0 if they match

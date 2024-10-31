@@ -1,7 +1,2 @@
-﻿  ADDI.c
-  AND.c
-  BEQ.c
-  BNE.c
-  DIV.c
-  Generating Code...
+﻿  SW.c
   C_Project.vcxproj -> C:\Users\lucas\Documents\5th semester\Assembler\MIPS-Assembler\x64\Debug\C_Project.exe

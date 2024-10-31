@@ -1,5 +1,9 @@
 #include "Instruction.h"
-
+/*
+Luke Graham: ADD, ADDI, BEQ, BNE, DIV
+Wyatt Albertson: LUI, LW, MFHI, MFLO, MULT
+Caleb Edwards: OR, ORI, SLT, SLTI, SUB, SW
+*/
 void or_reg_assm(void) {
 	// Check if the op code matches "OR"
 	if (strcmp(OP_CODE, "OR") != 0) {

@@ -1,5 +1,9 @@
 #include "Instruction.h"
-
+/*
+Luke Graham: ADD, ADDI, BEQ, BNE, DIV
+Wyatt Albertson: LUI, LW, MFHI, MFLO, MULT
+Caleb Edwards: OR, ORI, SLT, SLTI, SUB, SW
+*/
 void sw_immd_assm(void) {
 	// Check if the op code matches
 	if (strcmp(OP_CODE, "SW") != 0) {
@@ -10,18 +14,17 @@ void sw_immd_assm(void) {
 	/*
 		Checking the type of parameters
 	*/
-	if (PARAM1.type != REGISTER) { // Rt (source register)
-		state = MISSING_REG;
-		return;
-	}
-	//f
-
-	if (PARAM2.type != REGISTER) { // Rs (base register)
+	if (PARAM1.type != REGISTER) {
 		state = MISSING_REG;
 		return;
 	}
 
-	if (PARAM3.type != IMMEDIATE) { // Immediate offset
+	if (PARAM2.type != REGISTER) {
+		state = MISSING_REG;
+		return;
+	}
+
+	if (PARAM3.type != IMMEDIATE) {
 		state = MISSING_PARAM;
 		return;
 	}
@@ -39,7 +42,7 @@ void sw_immd_assm(void) {
 		return;
 	}
 
-	if (PARAM3.value != IMMEDIATE) {
+	if (PARAM3.value > 0xFFFF) {
 		state = INVALID_IMMED;
 		return;
 	}
@@ -69,18 +72,18 @@ void sw_immd_bin(void) {
 		Finding values in the binary
 	*/
 
-	uint32_t Rt = getBits(20, 5);  // Register containing the value to store
-	uint32_t Rs = getBits(25, 5);  // Base register
-	uint32_t imm16 = getBits(15, 16); // Immediate offset
+	uint32_t Rt = getBits(20, 5);
+	uint32_t Rs = getBits(25, 5);
+	uint32_t imm16 = getBits(15, 16);
 
 	/*
 		Setting Instruction values
 	*/
 
 	setOp("SW");
-	setParam(1, REGISTER, Rt);  // Register to store
-	setParam(2, REGISTER, Rs);   // Base register
-	setParam(3, IMMEDIATE, imm16); // Offset
+	setParam(1, REGISTER, Rt);
+	setParam(2, REGISTER, Rs);
+	setParam(3, IMMEDIATE, imm16);
 
 	state = COMPLETE_DECODE;
 }

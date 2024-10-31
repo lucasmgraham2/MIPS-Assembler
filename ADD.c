@@ -1,5 +1,9 @@
 #include "Instruction.h"
-
+/*
+Luke Graham: ADD, ADDI, BEQ, BNE, DIV
+Wyatt Albertson: LUI, LW, MFHI, MFLO, MULT
+Caleb Edwards: OR, ORI, SLT, SLTI, SUB, SW
+*/
 void add_reg_assm(void) {
 	// Check that the op code matches "ADD"
 	if (strcmp(OP_CODE, "ADD") != 0) {

@@ -1,5 +1,9 @@
 #include "Instruction.h"
-
+/*
+Luke Graham: ADD, ADDI, BEQ, BNE, DIV
+Wyatt Albertson: LUI, LW, MFHI, MFLO, MULT
+Caleb Edwards: OR, ORI, SLT, SLTI, SUB, SW
+*/
 void beq_immd_assm(void) {
 	// Checking that the op code matches
 	if (strcmp(OP_CODE, "BEQ") != 0) {
