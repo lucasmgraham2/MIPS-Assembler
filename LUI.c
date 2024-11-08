@@ -58,7 +58,7 @@ void lui_immd_assm(void) {
 	setBits_str(31, "001111");
 
 	// set Rs
-	setBits_num(25, PARAM1.value, 5);
+	setBits_num(20, PARAM1.value, 5);
 
 	// set immediate
 	setBits_num(15, PARAM2.value, 16);
@@ -83,7 +83,7 @@ void lui_immd_bin(void) {
 		Finding values in the binary
 	*/
 	// getBits(start_bit, width)
-	uint32_t Rt = getBits(25, 5);
+	uint32_t Rt = getBits(20, 5);
 	uint32_t imm16 = getBits(15, 16);
 
 
