@@ -64,15 +64,15 @@ void div_reg_bin(void) {
 
 	uint32_t Rs = getBits(25, 5);
 	uint32_t Rt = getBits(20, 5);
-
+	uint32_t imm16 = getBits(15, 16);
 	/*
 		Setting Instruction values
 	*/
 
 	setOp("DIV");
 	setParam(1, REGISTER, Rs);
-	setParam(3, REGISTER, Rt); //set this as param3 to get rid of trailing comma
-
+	setParam(2, REGISTER, Rt);
+	setParam(3, IMMEDIATE, imm16);
 	state = COMPLETE_DECODE;
 }
 
